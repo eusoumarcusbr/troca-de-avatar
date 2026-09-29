@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Monte sua foto de perfil | Pedro Taques</title>
+<meta name="description" content="Escolha uma moldura, ajuste sua foto e baixe sua nova foto de perfil. Tudo direto no seu aparelho.">
+<meta name="theme-color" content="#2B1574">
+<meta property="og:title" content="Monte sua foto de perfil | Pedro Taques">
+<meta property="og:description" content="Escolha uma moldura, ajuste sua foto e baixe sua nova foto de perfil.">
+<meta property="og:type" content="website">
+<style>
+/* ==========================================================================
+   Tokens copiados de DS/tokens/colors.css e DS/tokens/typography.css
+   (PEDRO_TAQUES/08_AGOSTO/20260815-LANDINGPAGE/DS). Não redeclarar hex solto.
+   ========================================================================== */
+
+/* ---- FONTES INSTITUCIONAIS ---- */
+@font-face{font-family:"Qanelas";src:url("fontes/qanelas-semibold.woff2") format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Qanelas";src:url("fontes/qanelas-heavy.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow";src:url("fontes/barlow-light.woff2") format("woff2");font-weight:300;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow";src:url("fontes/barlow-regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Barlow";src:url("fontes/barlow-extrabold.woff2") format("woff2");font-weight:800;font-style:normal;font-display:swap}
+
+:root{
+  /* principais */
+  --pt-amarelo:#FFC000;
+  --pt-azul-marinho:#2B1574;
+  --pt-verde:#009532;
+  --pt-branco:#FFFFFF;
+  /* funcionais */
+  --pt-laranja:#F29500;
+  --pt-roxo-azulado:#4431A4;
+  --pt-verde-escuro:#006727;
+  --pt-cinza-escuro:#383838;
+  /* secundárias */
+  --pt-azul-acento:#2644B4;
+  --pt-vermelho:#E20016;
+  /* neutros de apoio */
+  --pt-cinza-100:#F5F5F3;
+  --pt-cinza-300:#D9D9D6;
+  --pt-cinza-600:#6E6E6E;
+  /* semânticos */
+  --color-bg:var(--pt-branco);
+  --color-text:var(--pt-cinza-escuro);
+  --color-heading:var(--pt-azul-marinho);
+  --color-cta-primario:var(--pt-laranja);
+  --color-cta-primario-hover:#D68300;
+  --color-border:var(--pt-cinza-300);
+  --color-alerta:var(--pt-vermelho);
+  /* tipografia */
+  --font-display:"Qanelas","Arial Narrow",sans-serif;
+  --font-body:"Barlow","Helvetica Neue",sans-serif;
+  --ls-eyebrow:.14em;
+  --ls-heading:-.01em;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--color-bg);color:var(--color-text);
+  font-family:var(--font-body);font-weight:400;font-size:1rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:env(safe-area-inset-bottom)
+}
+.container{max-width:600px;margin:0 auto;padding:0 24px}
+
+/* ---------- hero institucional ---------- */
+.hero{background:var(--pt-azul-marinho);color:var(--pt-branco);padding:32px 0 34px;position:relative;overflow:hidden;text-align:center}
+.hero-gif{
+  display:block;margin:20px auto 18px;
+  width:min(196px,50vw);height:auto;aspect-ratio:1/1;
+  border-radius:50%;border:3px solid var(--pt-amarelo);
+  background:var(--pt-branco);object-fit:cover
+}
+.hero::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:6px;
+  background:linear-gradient(to right,var(--pt-verde) 0 33.33%,var(--pt-amarelo) 33.33% 66.66%,var(--pt-azul-acento) 66.66% 100%)
+}
+.eyebrow{
+  font-family:var(--font-body);font-weight:300;font-size:.8125rem;
+  letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--pt-amarelo)
+}
+.hero h1{
+  font-family:var(--font-display);font-weight:800;text-transform:uppercase;
+  letter-spacing:var(--ls-heading);line-height:1.05;
+  font-size:clamp(2rem,8.5vw,2.75rem);color:var(--pt-branco);margin-top:10px
+}
+.hero p{font-weight:300;font-size:1.0625rem;line-height:1.5;margin:14px auto 0;color:rgba(255,255,255,.86);max-width:42ch}
+
+/* ---------- passos ---------- */
+.passo{margin-top:34px}
+.passo-tit{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.passo-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:26px;height:26px;border-radius:999px;flex:none;
+  background:var(--pt-amarelo);color:var(--pt-azul-marinho);
+  font-family:var(--font-body);font-weight:800;font-size:.8125rem
+}
+.passo-tit span:last-child{
+  font-family:var(--font-display);font-weight:600;text-transform:uppercase;
+  letter-spacing:var(--ls-heading);font-size:1.0625rem;color:var(--color-heading)
+}
+
+/* ---------- upload ---------- */
+.drop{
+  border:2px dashed var(--pt-cinza-300);border-radius:4px;background:var(--pt-cinza-100);
+  padding:32px 20px;text-align:center;cursor:pointer;
+  transition:border-color .15s,background .15s
+}
+.drop:hover,.drop.over{border-color:var(--pt-laranja);background:#FFF6E8}
+.drop svg{width:32px;height:32px;stroke:var(--pt-laranja);fill:none;stroke-width:1.8;margin-bottom:12px}
+.drop strong{
+  display:block;font-family:var(--font-display);font-weight:600;
+  text-transform:uppercase;font-size:1rem;color:var(--color-heading);margin-bottom:6px
+}
+.drop span{color:var(--pt-cinza-600);font-size:.875rem;font-weight:300}
+input[type=file]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* ---------- palco ---------- */
+#palco{display:none}
+#palco.ativo{display:block}
+.canvas-box{
+  position:relative;width:100%;aspect-ratio:1/1;border-radius:4px;
+  background:var(--pt-cinza-100);border:1px solid var(--color-border);
+  overflow:hidden;touch-action:none;cursor:grab
+}
+.canvas-box:active{cursor:grabbing}
+canvas{display:block;width:100%;height:100%}
+.dica{
+  position:absolute;left:0;right:0;bottom:0;padding:10px 12px;
+  background:linear-gradient(to top,rgba(43,21,116,.92),rgba(43,21,116,0));
+  font-family:var(--font-body);font-weight:300;font-size:.75rem;
+  letter-spacing:.1em;text-transform:uppercase;color:#fff;text-align:center;
+  pointer-events:none;transition:opacity .4s
+}
+.dica.some{opacity:0}
+
+/* ---------- controles ---------- */
+.controles{margin-top:16px;display:flex;align-items:center;gap:12px}
+.zoom-lab{
+  font-family:var(--font-body);font-weight:300;font-size:.75rem;
+  letter-spacing:var(--ls-eyebrow);text-transform:uppercase;color:var(--pt-cinza-600);flex:none
+}
+input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:4px;border-radius:999px;background:var(--pt-cinza-300);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:999px;background:var(--pt-laranja);border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:999px;background:var(--pt-laranja);border:2px solid #fff;cursor:pointer}
+.icone{
+  flex:none;width:42px;height:42px;border-radius:4px;background:transparent;
+  border:2px solid var(--pt-azul-marinho);color:var(--pt-azul-marinho);cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;transition:background .15s,color .15s
+}
+.icone:hover{background:var(--pt-azul-marinho);color:#fff}
+.icone svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.9}
+
+/* ---------- molduras ---------- */
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:10px}
+.thumb{
+  position:relative;aspect-ratio:1/1;border-radius:4px;background:var(--pt-cinza-100);
+  border:2px solid var(--color-border);cursor:pointer;padding:0;overflow:hidden;transition:border-color .15s
+}
+.thumb img{width:100%;height:100%;object-fit:contain;display:block}
+.thumb:hover{border-color:var(--pt-laranja)}
+.thumb[aria-pressed=true]{border-color:var(--pt-amarelo);box-shadow:0 0 0 2px var(--pt-amarelo)}
+.thumb-nome{
+  position:absolute;left:0;right:0;bottom:0;background:var(--pt-azul-marinho);color:#fff;
+  font-family:var(--font-body);font-weight:800;font-size:.5rem;letter-spacing:.04em;
+  text-transform:uppercase;padding:3px 2px;text-align:center;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+.thumb[aria-pressed=true] .thumb-nome{background:var(--pt-amarelo);color:var(--pt-azul-marinho)}
+
+/* ---------- botões ---------- */
+.acoes{margin-top:34px;display:flex;flex-direction:column;gap:10px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+  padding:16px 32px;border-radius:4px;border:none;cursor:pointer;
+  font-family:var(--font-body);font-weight:800;font-size:1rem;
+  text-transform:uppercase;letter-spacing:.02em;
+  transition:background-color .15s ease,transform .1s ease,color .15s
+}
+.btn:active{transform:translateY(1px)}
+.btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+.btn--primario{background:var(--color-cta-primario);color:var(--pt-branco)}
+.btn--primario:hover{background:var(--color-cta-primario-hover)}
+.btn--secundario{background:var(--pt-azul-marinho);color:var(--pt-branco)}
+.btn--secundario:hover{background:#200F5C}
+.btn--outline{background:transparent;color:var(--pt-azul-marinho);border:2px solid var(--pt-azul-marinho)}
+.btn--outline:hover{background:var(--pt-azul-marinho);color:var(--pt-branco)}
+
+/* ---------- avisos ---------- */
+.nota{
+  margin:34px 0 48px;background:var(--pt-cinza-100);border-radius:4px;
+  border-left:6px solid var(--pt-verde);padding:18px 20px;font-size:.875rem;color:var(--pt-cinza-600)
+}
+.nota strong{
+  display:block;font-family:var(--font-display);font-weight:600;text-transform:uppercase;
+  font-size:.9375rem;color:var(--pt-verde-escuro);margin-bottom:4px
+}
+#aviso{display:none;background:#FFF6E8;border-radius:4px;border-left:6px solid var(--pt-laranja);padding:14px 16px;font-size:.875rem;color:var(--pt-cinza-escuro);margin-bottom:4px}
+#aviso.grave{background:#FDECEC;border-left-color:var(--color-alerta)}
+#aviso b{font-weight:800}
+#dica-galeria{display:none;margin:-4px 0 2px;text-align:center;font-size:.8125rem;font-weight:300;color:var(--pt-cinza-600)}
+#dica-galeria b{font-weight:800;color:var(--pt-cinza-escuro)}
+#erro{display:none;margin-top:14px;background:#FDECEC;border-radius:4px;border-left:6px solid var(--color-alerta);padding:14px 16px;font-size:.875rem;color:var(--pt-cinza-escuro)}
+.oculto{display:none !important}
+#passo-upload.recolhido .drop{padding:14px 18px;background:transparent;border-style:solid;border-width:1px}
+#passo-upload.recolhido .drop svg,#passo-upload.recolhido .drop span{display:none}
+#passo-upload.recolhido .drop strong{font-family:var(--font-body);font-weight:400;text-transform:none;font-size:.875rem;color:var(--pt-cinza-600);margin:0}
+#passo-upload.recolhido .drop strong::after{content:" (trocar)";font-weight:800;color:var(--pt-laranja)}
+</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7K27WX86XT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7K27WX86XT');
+</script>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1067362049011990');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1067362049011990&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow">Pedro Taques &middot; Senado 2026</div>
+    <img class="hero-gif" src="assets/avatares.gif" width="1080" height="1080"
+         alt="Exemplos de fotos de perfil com as molduras da campanha aplicadas">
+    <h1>Monte sua foto de perfil</h1>
+    <p>Escolha uma moldura, ajuste o enquadramento e baixe. Sua foto não é enviada para lugar nenhum, tudo acontece dentro do seu próprio aparelho.</p>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="passo" id="passo-upload">
+    <div class="passo-tit"><span class="passo-num">1</span><span>Envie sua foto</span></div>
+    <div class="drop" id="drop" role="button" tabindex="0" aria-label="Selecionar foto">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M12 4l-5 5M12 4l5 5"/><path d="M3 15v4a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-4"/></svg>
+      <strong>Toque para escolher uma foto</strong>
+      <span>JPG, PNG ou HEIC, direto da galeria ou da câmera</span>
+    </div>
+    <input type="file" id="arquivo" accept="image/*">
+    <div id="erro"></div>
+  </section>
+
+  <div id="palco">
+    <section class="passo">
+      <div class="passo-tit"><span class="passo-num">2</span><span>Ajuste o enquadramento</span></div>
+      <div class="canvas-box" id="box">
+        <canvas id="tela" width="1080" height="1080"></canvas>
+        <div class="dica" id="dica">Arraste e use dois dedos para ajustar</div>
+      </div>
+      <div class="controles">
+        <span class="zoom-lab">Zoom</span>
+        <input type="range" id="zoom" min="1" max="4" step="0.01" value="1" aria-label="Zoom da foto">
+        <button class="icone" id="girar" title="Girar 90 graus" aria-label="Girar 90 graus">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+        </button>
+        <button class="icone" id="centralizar" title="Centralizar" aria-label="Centralizar">
+          <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="passo">
+      <div class="passo-tit"><span class="passo-num">3</span><span>Escolha a moldura</span></div>
+      <div class="grade" id="grade"></div>
+    </section>
+
+    <div class="acoes">
+      <div id="aviso"></div>
+      <button class="btn btn--primario" id="baixar">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M12 16l-5-5M12 16l5-5"/><path d="M4 20h16"/></svg>
+        Baixar minha foto
+      </button>
+      <button class="btn btn--secundario oculto" id="compartilhar">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V3M12 3 7 8M12 3l5 5"/><path d="M4 14v5a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-5"/></svg>
+        Compartilhar
+      </button>
+      <p id="dica-galeria">Na janela que abrir, toque em <b>Salvar Imagem</b>.</p>
+      <button class="btn btn--outline" id="trocar">Trocar de foto</button>
+    </div>
+  </div>
+
+  <p class="nota">
+    <strong>Sua privacidade</strong>
+    Este aplicativo funciona inteiramente no seu navegador. Nenhuma foto é enviada, armazenada ou compartilhada com o site. Ao fechar esta página, nada permanece.
+  </p>
+</main>
+
+<script>
+(function(){
+  "use strict";
+
+  var SIZE = 1080;
+  var PADRAO = [
+    {id:"vou-de-taques",  nome:"Vou de Taques",       curto:"Taques",       arquivo:"molduras/01.png", ativa:true},
+    {id:"meu-voto",       nome:"Meu voto é do Pedro", curto:"Meu voto", arquivo:"molduras/02.png", ativa:true},
+    {id:"vou-de-coragem", nome:"Vou de Coragem",      curto:"Coragem",      arquivo:"molduras/03.png", ativa:true},
+    {id:"to-com-pedro",   nome:"Tô com Pedro",       curto:"Tô com Pedro", arquivo:"molduras/04.png", ativa:true},
+    {id:"oficial-senador",nome:"Senador Pedro Taques 400", curto:"Oficial", arquivo:"molduras/05.png", ativa:true}
+  ];
+
+  var tela = document.getElementById('tela');
+  var ctx  = tela.getContext('2d');
+  var box  = document.getElementById('box');
+  var drop = document.getElementById('drop');
+  var arquivo = document.getElementById('arquivo');
+  var grade = document.getElementById('grade');
+  var zoom = document.getElementById('zoom');
+  var palco = document.getElementById('palco');
+  var dica = document.getElementById('dica');
+  var erro = document.getElementById('erro');
+
+  var st = {img:null, escala:1, min:1, x:0, y:0, iMoldura:0};
+  var molduras = [];
+
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  /* ---------- catalogo ---------- */
+  function carregarCatalogo(){
+    fetch('molduras.json', {cache:'no-cache'})
+      .then(function(r){ if(!r.ok) throw new Error('sem json'); return r.json(); })
+      .then(function(d){ montarMolduras((d && d.molduras) || PADRAO); })
+      .catch(function(){ montarMolduras(PADRAO); });
+  }
+
+  function montarMolduras(lista){
+    molduras = lista.filter(function(m){ return m.ativa !== false; });
+    grade.innerHTML = '';
+    var falhas = 0;
+    molduras.forEach(function(m, i){
+      var b = document.createElement('button');
+      b.className = 'thumb';
+      b.type = 'button';
+      b.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+      b.innerHTML = '<img src="' + m.arquivo + '" alt="' + m.nome + '" loading="lazy">'
+                  + '<span class="thumb-nome">' + (m.curto || m.nome) + '</span>';
+      b.addEventListener('click', function(){ selecionar(i); });
+      grade.appendChild(b);
+
+      /* Sem crossOrigin: com o atributo, o navegador exige cabecalho CORS e a
+         moldura simplesmente nao carrega quando o arquivo e aberto localmente. */
+      var im = new Image();
+      im.onload = function(){
+        m.el = im;
+        if(i === st.iMoldura) desenhar();
+      };
+      im.onerror = function(){
+        falhas++;
+        mostrarErro('Não consegui carregar ' + (falhas > 1 ? falhas + ' molduras' : 'a moldura "' + m.nome + '"') +
+                    '. Confirme se a pasta "molduras" foi enviada junto com o index.html.');
+      };
+      im.src = m.arquivo;
+    });
+  }
+
+  function selecionar(i){
+    var botoes = grade.querySelectorAll('.thumb');
+    for(var k = 0; k < botoes.length; k++){
+      botoes[k].setAttribute('aria-pressed', k === i ? 'true' : 'false');
+    }
+    st.iMoldura = i;
+    desenhar();
+  }
+
+  function molduraAtual(){
+    var m = molduras[st.iMoldura];
+    return (m && m.el) || null;
+  }
+
+  /* ---------- desenho ---------- */
+  function desenhar(){
+    ctx.clearRect(0, 0, SIZE, SIZE);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 0, SIZE, SIZE);
+    if(st.img){
+      ctx.save();
+      ctx.translate(st.x, st.y);
+      ctx.scale(st.escala, st.escala);
+      ctx.drawImage(st.img, 0, 0);
+      ctx.restore();
+    }
+    var mold = molduraAtual();
+    if(mold){
+      ctx.drawImage(mold, 0, 0, SIZE, SIZE);
+    }
+  }
+
+  function limitar(){
+    var l = st.img.width  * st.escala;
+    var a = st.img.height * st.escala;
+    st.x = Math.min(0, Math.max(SIZE - l, st.x));
+    st.y = Math.min(0, Math.max(SIZE - a, st.y));
+    if(l < SIZE) st.x = (SIZE - l) / 2;
+    if(a < SIZE) st.y = (SIZE - a) / 2;
+  }
+
+  function enquadrar(){
+    st.min = Math.max(SIZE / st.img.width, SIZE / st.img.height);
+    st.escala = st.min;
+    st.x = (SIZE - st.img.width  * st.escala) / 2;
+    st.y = (SIZE - st.img.height * st.escala) / 2;
+    zoom.min = String(st.min);
+    zoom.max = String(st.min * 4);
+    zoom.step = String(st.min / 100);
+    zoom.value = String(st.escala);
+    limitar();
+    desenhar();
+  }
+
+  function aplicarEscala(nova, cx, cy){
+    nova = Math.min(st.min * 4, Math.max(st.min, nova));
+    if(nova === st.escala) return;
+    var r = nova / st.escala;
+    st.x = cx - (cx - st.x) * r;
+    st.y = cy - (cy - st.y) * r;
+    st.escala = nova;
+    zoom.value = String(nova);
+    limitar();
+    desenhar();
+  }
+
+  /* ---------- entrada ---------- */
+  function mostrarErro(msg){
+    erro.textContent = msg;
+    erro.style.display = 'block';
+    erro.scrollIntoView({behavior:'smooth', block:'center'});
+  }
+
+  /* Mensagens ligadas ao download aparecem junto do botao, nunca la em cima. */
+  var aviso = document.getElementById('aviso');
+  function avisar(html, grave){
+    aviso.innerHTML = html;
+    aviso.className = grave ? 'grave' : '';
+    aviso.style.display = 'block';
+  }
+
+  function receber(file){
+    erro.style.display = 'none';
+    if(!file){ return; }
+    if(!/^image\//.test(file.type) && !/\.(hei[cf])$/i.test(file.name || '')){
+      mostrarErro('Este arquivo não é uma imagem. Escolha uma foto em JPG, PNG ou HEIC.');
+      return;
+    }
+    var pronto = function(bmp){
+      st.img = bmp;
+      palco.classList.add('ativo');
+      document.getElementById('passo-upload').classList.add('recolhido');
+      enquadrar();
+      dica.classList.remove('some');
+      setTimeout(function(){ dica.classList.add('some'); }, 4200);
+      palco.scrollIntoView({behavior:'smooth', block:'start'});
+    };
+    if(window.createImageBitmap){
+      createImageBitmap(file, {imageOrientation:'from-image'})
+        .then(pronto)
+        .catch(function(){ viaUrl(file, pronto); });
+    } else {
+      viaUrl(file, pronto);
+    }
+  }
+
+  function viaUrl(file, pronto){
+    var url = URL.createObjectURL(file);
+    var im = new Image();
+    im.onload = function(){ pronto(im); };
+    im.onerror = function(){ mostrarErro('Não consegui abrir esta imagem. Tente outra foto.'); };
+    im.src = url;
+  }
+
+  drop.addEventListener('click', function(){ arquivo.click(); });
+  drop.addEventListener('keydown', function(e){
+    if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); arquivo.click(); }
+  });
+  arquivo.addEventListener('change', function(e){ receber(e.target.files[0]); });
+  ['dragenter','dragover'].forEach(function(t){
+    drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.add('over'); });
+  });
+  ['dragleave','drop'].forEach(function(t){
+    drop.addEventListener(t, function(e){ e.preventDefault(); drop.classList.remove('over'); });
+  });
+  drop.addEventListener('drop', function(e){
+    if(e.dataTransfer && e.dataTransfer.files.length) receber(e.dataTransfer.files[0]);
+  });
+
+  /* ---------- arrastar e pinca ---------- */
+  var pontos = {};
+  var distIni = 0, escalaIni = 1, meioIni = null;
+
+  function coord(e){
+    var r = box.getBoundingClientRect();
+    return {x:(e.clientX - r.left) * (SIZE / r.width), y:(e.clientY - r.top) * (SIZE / r.height)};
+  }
+
+  box.addEventListener('pointerdown', function(e){
+    if(!st.img) return;
+    box.setPointerCapture(e.pointerId);
+    pontos[e.pointerId] = coord(e);
+    dica.classList.add('some');
+    var ids = Object.keys(pontos);
+    if(ids.length === 2){
+      var a = pontos[ids[0]], b = pontos[ids[1]];
+      distIni = Math.hypot(a.x - b.x, a.y - b.y);
+      escalaIni = st.escala;
+      meioIni = {x:(a.x + b.x) / 2, y:(a.y + b.y) / 2};
+    }
+  });
+
+  box.addEventListener('pointermove', function(e){
+    if(!st.img || !pontos[e.pointerId]) return;
+    var novo = coord(e);
+    var ids = Object.keys(pontos);
+    if(ids.length === 1){
+      st.x += novo.x - pontos[e.pointerId].x;
+      st.y += novo.y - pontos[e.pointerId].y;
+      pontos[e.pointerId] = novo;
+      limitar();
+      desenhar();
+    } else if(ids.length === 2){
+      pontos[e.pointerId] = novo;
+      var a = pontos[ids[0]], b = pontos[ids[1]];
+      var d = Math.hypot(a.x - b.x, a.y - b.y);
+      if(distIni > 0) aplicarEscala(escalaIni * (d / distIni), meioIni.x, meioIni.y);
+    }
+  });
+
+  function soltar(e){
+    delete pontos[e.pointerId];
+    if(Object.keys(pontos).length < 2) distIni = 0;
+  }
+  box.addEventListener('pointerup', soltar);
+  box.addEventListener('pointercancel', soltar);
+
+  box.addEventListener('wheel', function(e){
+    if(!st.img) return;
+    e.preventDefault();
+    var c = coord(e);
+    aplicarEscala(st.escala * (e.deltaY < 0 ? 1.08 : 1 / 1.08), c.x, c.y);
+  }, {passive:false});
+
+  zoom.addEventListener('input', function(){
+    if(!st.img) return;
+    aplicarEscala(parseFloat(zoom.value), SIZE / 2, SIZE / 2);
+  });
+
+  document.getElementById('centralizar').addEventListener('click', function(){
+    if(st.img) enquadrar();
+  });
+
+  document.getElementById('girar').addEventListener('click', function(){
+    if(!st.img) return;
+    var c = document.createElement('canvas');
+    c.width = st.img.height;
+    c.height = st.img.width;
+    var g = c.getContext('2d');
+    g.translate(c.width / 2, c.height / 2);
+    g.rotate(Math.PI / 2);
+    g.drawImage(st.img, -st.img.width / 2, -st.img.height / 2);
+    st.img = c;
+    enquadrar();
+  });
+
+  document.getElementById('trocar').addEventListener('click', function(){ arquivo.click(); });
+
+  /* ---------- saida ---------- */
+  var NOME = 'foto-perfil-pedro-taques.png';
+
+  function gerar(cb){
+    try{
+      if(tela.toBlob){ tela.toBlob(function(b){ cb(b); }, 'image/png'); return; }
+      cb(null);
+    }catch(e){
+      avisar('O navegador bloqueou a exportação da imagem porque a página foi aberta direto do computador. ' +
+             'Use o <b>teste-local.html</b> para testar, ou publique a pasta no site.', true);
+      cb(false);
+    }
+  }
+
+  var btnBaixar = document.getElementById('baixar');
+  var btnComp   = document.getElementById('compartilhar');
+  var dicaGaleria = document.getElementById('dica-galeria');
+  var acoes = btnBaixar.parentNode;
+
+  /* iPhone e iPad. O iPad recente se apresenta como Macintosh, por isso a
+     segunda condicao olha para o toque em vez de olhar so para o nome. */
+  var ehApple = /iP(hone|ad|od)/.test(navigator.userAgent) ||
+                (/Mac/.test(navigator.userAgent) && navigator.maxTouchPoints > 1);
+
+  var podeCompartilhar = false;
+  try{
+    podeCompartilhar = !!(navigator.canShare && window.File &&
+      navigator.canShare({files:[new File([new Blob()], 'x.png', {type:'image/png'})]}));
+  }catch(e){}
+
+  function rotular(btn, classe, texto){
+    var svg = btn.querySelector('svg');
+    btn.className = 'btn ' + classe;
+    btn.textContent = '';
+    if(svg) btn.appendChild(svg);
+    btn.appendChild(document.createTextNode(' ' + texto));
+  }
+
+  /* No iPhone, um download comum nunca chega ao rolo da camera: o Safari manda
+     para o app Arquivos. O unico caminho ate a galeria e a folha de
+     compartilhamento, entao ela vira o botao principal nesses aparelhos. */
+  if(podeCompartilhar){
+    btnComp.classList.remove('oculto');
+    if(ehApple){
+      acoes.insertBefore(btnComp, btnBaixar);
+      rotular(btnComp,   'btn--primario',  'Salvar na galeria');
+      rotular(btnBaixar, 'btn--secundario','Baixar arquivo');
+      acoes.insertBefore(dicaGaleria, btnBaixar);
+      dicaGaleria.style.display = 'block';
+    }
+  }
+
+  function pronto(){
+    if(!st.img){ avisar('Escolha uma foto antes de salvar.', true); return false; }
+    if(!molduraAtual()){ avisar('A moldura ainda não terminou de carregar. Aguarde um instante e tente de novo.', true); return false; }
+    return true;
+  }
+
+  btnBaixar.addEventListener('click', function(){
+    if(!pronto()) return;
+    gerar(function(blob){
+      if(blob === false) return;
+      if(!blob){
+        window.open(tela.toDataURL('image/png'), '_blank');
+        avisar('A imagem abriu em uma nova aba. Segure o dedo sobre ela e escolha <b>Adicionar às Fotos</b>.');
+        return;
+      }
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url;
+      a.download = NOME;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+      if(ehApple){
+        avisar(podeCompartilhar
+          ? 'O arquivo foi salvo em Downloads, no app Arquivos. Para usar como foto de perfil, use o botão <b>Salvar na galeria</b>.'
+          : 'O arquivo foi salvo em Downloads, no app Arquivos. Abra o app Arquivos, toque na imagem, use o botão de compartilhar e escolha <b>Salvar Imagem</b>.');
+      }
+    });
+  });
+
+  btnComp.addEventListener('click', function(){
+    if(!pronto()) return;
+    gerar(function(blob){
+      if(!blob) return;
+      var f = new File([blob], NOME, {type:'image/png'});
+      navigator.share({files:[f], title:'Minha foto de perfil'}).catch(function(erro){
+        if(erro && erro.name === 'AbortError') return;
+        avisar('Não consegui abrir a janela de compartilhamento. Use o botão <b>Baixar arquivo</b>.', true);
+      });
+    });
+  });
+
+  carregarCatalogo();
+
+  /* Aberto por duplo clique: o navegador contamina o canvas com as imagens da
+     pasta e bloqueia a exportacao. A montagem aparece, o download nao sai. */
+  if(location.protocol === 'file:' && PADRAO[0].arquivo.slice(0,5) !== 'data:'){
+    avisar('Você abriu o arquivo direto do computador. A montagem funciona, mas o navegador bloqueia o download nesse modo. ' +
+           'Para testar o download, abra o <b>teste-local.html</b>. No site publicado o botão funciona normalmente.');
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "versao": 1,
+  "formato": "1080x1080",
+  "molduras": [
+    { "id": "vou-de-taques", "nome": "Vou de Taques", "curto": "Taques", "arquivo": "molduras/01.png", "ativa": true },
+    { "id": "meu-voto", "nome": "Meu voto é do Pedro", "curto": "Meu voto", "arquivo": "molduras/02.png", "ativa": true },
+    { "id": "vou-de-coragem", "nome": "Vou de Coragem", "curto": "Coragem", "arquivo": "molduras/03.png", "ativa": true },
+    { "id": "to-com-pedro", "nome": "Tô com Pedro", "curto": "Tô com Pedro", "arquivo": "molduras/04.png", "ativa": true },
+    { "id": "oficial-senador", "nome": "Senador Pedro Taques 400", "curto": "Oficial", "arquivo": "molduras/05.png", "ativa": true }
+  ]
+}
